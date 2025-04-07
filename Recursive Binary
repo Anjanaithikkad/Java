@@ -1,0 +1,63 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class RecursiveBinarySearch 
+{
+    public static int binarySearch(int[] arr, int low, int high, int target) 
+    {
+        if (low > high) 
+        {
+            return -1; // base case: not found
+        }
+
+        int mid = (low + high) / 2;
+
+        if (arr[mid] == target) 
+        {
+            return mid;
+        } 
+        else if (arr[mid] < target) 
+        {
+            return binarySearch(arr, mid + 1, high, target); // search right half
+        } 
+        else 
+        {
+            return binarySearch(arr, low, mid - 1, target); // search left half
+        }
+    }
+
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int n = scanner.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter " + n + " elements of the array:");
+        for (int i = 0; i < n; i++) 
+        {
+            arr[i] = scanner.nextInt();
+        }
+
+        Arrays.sort(arr);
+        System.out.println("Sorted array: " + Arrays.toString(arr));
+
+        System.out.print("Enter the element to search for: ");
+        int target = scanner.nextInt();
+
+        int result = binarySearch(arr, 0, arr.length - 1, target);
+
+        if (result != -1) 
+        {
+            System.out.println("Element " + target + " found at index " + result + ".");
+        } 
+        else 
+        {
+            System.out.println("Element " + target + " not found in the array.");
+        }
+
+        scanner.close();
+    }
+}
