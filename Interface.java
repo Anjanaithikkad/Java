@@ -77,4 +77,4 @@ Sports Score: 90
 
         Call displayResult() to display both the academic and sports scores.
 
-End
+End.
